@@ -1,154 +1,160 @@
-# CSCI 3081W - Project - "The Arena"
+# The Arena — C++ Multi-Entity Simulation System
 
-## Overview
+An interactive multi-entity simulation system developed in C++ as part of the University of Minnesota's CSCI 3081W Program Design and Development course.
 
-This is the base support code for the 2026 Spring CSCI 3081W Project - "The Arena".  Please refer to the [Iteration 1 Requirements Specification](https://github.umn.edu/umn-csci-3081-s26/public-docs/blob/main/Iteration1/README.md) for what we expect you and your team to develop.  Please also read the **Build Submission** instructions below to create a ```project.zip``` file to submit to the Gradescope autograder when it is available.
+The project features robots, autonomous behaviors, energy management, environmental objects, and entity interactions within a configurable simulation environment.
 
-## Pre-requisites
-  * [Git](https://git-scm.com/)
+## Technologies Used
 
-## Docker Pre-requisites
-  * Windows 10 Home
-    * Install [wsl2 and Ubuntu](https://www.youtube.com/watch?v=ilKQHAFeQR0&list=RDCMUCzLbHrU7U3cUDNQWWAqjceA&start_radio=1&t=7)
-  * Install [Docker Desktop](https://hub.docker.com/?overlay=onboarding) from [Docker Hub](https://hub.docker.com/)
-  * Linux
-    * Use [docker group instead of sudo](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
+- C++
+- Object-Oriented Programming (OOP)
+- JSON
+- Git
+- Docker
+- Make
+- Google Test
 
-## Getting Started with Docker
+## Key Features
 
-1. Build docker image
+### 1. Multi-Entity Simulation
 
-    ```bash
-    bin/build-env.sh
-    ```
+The simulation supports multiple entity types, including:
 
-2. Run docker image
+- Robot
+- Braitenberg Vehicle
+- Predator
+- Light
+- Water
+- Energy
 
-    ```bash
-    #Usage bin/run-env.sh <port - optional(default 8081)>
-    bin/run-env.sh
-    ```
-    
-3. Build project web server (inside docker image) NOTE: You won't be able to `cd` here yet because the project directory does not exist. If you were able to launch the above commands you should now be inside the docker image. You can exit it with CTRL+D now.
+Entities are created from JSON configurations and updated through the simulation model.
 
-    ```bash
-    # Inside docker image
-    make
-    ```
-    
-4. Run web server (inside docker image)
+### 2. Object-Oriented Design
 
-    ```bash
-    make run
-    ```
-    
-5. Open up Firefox and browse to http://127.0.0.1:8081/
+The project uses object-oriented programming principles to organize different entities and movement behaviors.
 
+Inheritance and polymorphism allow entities to share common functionality while supporting their own movement and interaction mechanisms.
 
-## Getting Started on Lab Machines
+### 3. Configurable Movement Behaviors
 
-1. SSH to a Lab Machine (with port forwarding ```-L 8081:127.0.0.1:8081``` - See [SSH FAQ](https://github.umn.edu/umn-csci-3081-s26/FAQ/tree/main/SSH) for more details.
+The simulation supports different movement strategies, including:
 
-   ```bash
-   ssh -L 8081:127.0.0.1:8081 x500@csel-xxxx.cselabs.umn.edu
-   ```
-   
-   Example:
-   ```bash
-   ssh -L 8081:127.0.0.1:8081 x500@csel-kh1250-05.cselabs.umn.edu
-   ```
+- Default movement
+- Bouncing movement
+- Keyboard-controlled movement
+- Back-and-forth movement
+- Circular movement
+- Composite movement
+- Inverse-distance-based movement
 
-2. Build project
+### 4. Braitenberg Vehicle Behaviors
 
-    ```bash
-    cd /path/to/cloned/project/repository
-    make
-    ```
-    
-3. Run project
+Braitenberg Vehicles use sensor readings to respond to nearby objects and environmental stimuli.
 
-    ```bash
-    make run
-    ```
-    
-4. Open up Firefox and browse to http://127.0.0.1:8081/
+Supported behaviors include:
 
+- Explore
+- Love
+- Fear
+- Aggression
 
-## Getting Started on Local Machine (Not Supported by CSCI 3081 Staff)
+Vehicle movement incorporates differential-drive kinematics and configurable behavior parameters.
 
-We can try to assist you here, but installing on local machines is technically not supported by CSCI 3081 Staff due to the complexities of individual environments.  We will however support both the Docker and Lab Machines, so these are recommended.
+### 5. Energy Management and Entity Interactions
 
-1. Install development dependencies.  Refer to the Dockefile for what would be need on a Linux system or WSL:
+Robots consume energy during movement and can recharge through interactions with energy entities.
 
-   * [Dependency List](Dockerfile#L7)
+Predators can interact with other robots through proximity-based collision detection and attack mechanisms.
 
-2. Build project
+These interactions create a dynamic simulation environment with different entity behaviors.
 
-    ```bash
-    cd /path/to/cloned/project/repository
-    make
-    ```
-    
-3. Run project
+## Development Work
 
-    ```bash
-    make run
-    ```
-    
-4. Open up Firefox and browse to http://127.0.0.1:8081/
+My work on this project focused on implementing and integrating simulation functionality in C++, including:
 
-## Build Submission
+- Developing entity behavior and movement logic.
+- Implementing JSON-based entity creation and configuration.
+- Integrating different entities into the simulation model.
+- Implementing robot energy management and entity interactions.
+- Debugging simulation behavior and resolving integration issues.
+- Building and testing the application throughout development.
 
-1. Build your submission for submitting to Gradescope.
+The project was developed using a course-provided starter framework.
 
-   ```bash
-   make submission
-   ```
+## Project Structure
 
-2. Submit ```project.zip``` to the Gradescope assignment.
+```text
+apps/       Application and web interface
+bin/        Build and execution scripts
+data/       JSON scene configurations
+env/        Docker environment
+gis/        Graphics and terrain support
+include/    C++ header files
+lib/        Libraries and dependencies
+src/        Simulation implementation
+tests/      Tests
+```
 
+## How to Build and Run
 
-## Running / Debugging
+### Prerequisites
 
-* Running with ```data/scenes/default.json```:
- 
-    ```bash
-    # Running
-    make run
-    
-    # Debugging with GDB
-    make debug
-    ```
+- Git
+- Docker
 
-* Setting a scene configuration (e.g. ```data/scenes/default.json```):
+### 1. Clone the repository
 
-    ```bash
-    # Running
-    ./bin/start.sh data/scenes/default.json
-    
-    # Debugging with GDB
-    ./bin/debug.sh data/scenes/robots.json
-    ```
+```bash
+git clone https://github.com/austinhe7788-cpu/cpp-multi-entity-simulation.git
+cd cpp-multi-entity-simulation
+```
 
-* Running with a different port (e.g. 8082 instead of 8081):
-  
-    Environment Setup:
+### 2. Build the Docker environment
 
-    ```bash
-    # Docker
-    ./bin/run_env.sh 8082
-    
-    # SSH
-    ssh -L 8082:127.0.0.1:8082 x500@csel-xxxx.cselabs.umn.edu
-    ```
-    Running:
+```bash
+bin/build-env.sh
+```
 
-    ```bash
-    # Running
-    ./bin/start.sh data/scenes/umn.json 8082
-    
-    # Debugging with GDB
-    ./bin/debug.sh data/scenes/bv.json 8082
-    ```
+### 3. Run the Docker environment
 
+```bash
+bin/run-env.sh
+```
 
+### 4. Build the project
+
+Inside the Docker environment:
+
+```bash
+make
+```
+
+### 5. Run the simulation
+
+```bash
+make run
+```
+
+Open the following address in your browser:
+
+http://127.0.0.1:8081/
+
+## Example Simulation
+
+The project includes different JSON scene configurations under:
+
+```text
+data/scenes/
+```
+
+For example, the Braitenberg Vehicle simulation can be launched using:
+
+```bash
+./bin/start.sh data/scenes/bv.json
+```
+
+## Acknowledgments
+
+Developed as part of CSCI 3081W at the University of Minnesota, Twin Cities.
+
+The repository builds upon course-provided starter code and includes third-party libraries and assets. Original copyright notices and attribution are retained in the source files.
