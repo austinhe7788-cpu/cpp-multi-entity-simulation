@@ -1,0 +1,48 @@
+{
+    "map" : "/assets/maps/dunes.png",
+    "width" : 800,
+    "height" : 600,
+    "entities" : [
+        {
+            "type" : "bv", 
+            "image" : "/assets/robot_pack/robot_3Dred.png",
+            "motion": {"type": "love", "speed" : 100.0},
+            "position" : [100.0, 400.0, 0], 
+            "direction" : [1.0, 0.0, 0],
+            "radius" : 30.0
+        },
+        {
+            "type" : "bv", 
+            "image" : "/assets/robot_pack/robot_3Dgreen.png",
+            "motion": {"type": "explore", "speed" : 100.0},
+            "position" : [100.0, 200.0, 0], 
+            "direction" : [1.0, 0.0, 0],
+            "radius" : 30.0
+        },
+        {
+            "type" : "bv", 
+            "image" : "/assets/robot_pack/robot_3Dblue.png",
+            "motion": {"type": "fear", "speed" : 100.0},
+            "position" : [500.0, 250.0, 0], 
+            "direction" : [-1.0, 0.0, 0],
+            "radius" : 30.0
+        },
+        {
+            "type" : "bv", 
+            "image" : "/assets/robot_pack/robot_3Dyellow.png",
+            "motion": {"type": "agression", "speed" : 100.0},
+            "position" : [500.0, 350.0, 0], 
+            "direction" : [-1.0, 0.0, 0],
+            "radius" : 30.0
+        },
+        {
+            "type" : "light", 
+            "image" : "/assets/sprites/light.png",
+            "motion": {"type": "default"},
+            "position" : [400.0, 300.0, 0], 
+            "direction" : [1.0, 0.0, 0], 
+            "speed": 0.0, 
+            "radius" : 50.0
+        }
+    ]
+}
