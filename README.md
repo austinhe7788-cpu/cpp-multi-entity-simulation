@@ -4,6 +4,13 @@ An interactive multi-entity simulation system developed in C++ as part of the Un
 
 The project features robots, autonomous behaviors, energy management, environmental objects, and entity interactions within a configurable simulation environment.
 
+## Simulation Demo
+
+The following screenshot shows the simulation environment with multiple
+interactive entities, including robots, light sources, and environmental objects.
+
+![The Arena Simulation Demo](images/arena-demo.png)
+
 ## Technologies Used
 
 - C++
